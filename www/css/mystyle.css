@@ -1,0 +1,36 @@
+#output1{ 
+	float: left; 
+	color: red; 
+	padding-bottom: .5em;
+	vertical-align: top; 
+	font-size:14px;
+	min-height: 180px;
+}
+#output2,#output3{ 
+	float: left;  
+	padding-bottom: .5em;
+	vertical-align: top; 
+	font-size:14px;
+	min-height: 300px;
+}
+#output4{ 
+	float: left; 
+	padding-bottom: .5em;
+	vertical-align: top; 
+	font-size:14px;
+	min-height: 255px;
+}
+img{
+    vertical-align:text-top;
+	display:inline;
+	float:right;
+}
+.ui-btn{
+    font-size:.70em;
+    margin-right:5px
+}
+table{
+    padding: 10px
+}
+td{
+height:25px}
