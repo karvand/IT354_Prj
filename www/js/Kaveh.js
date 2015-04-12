@@ -59,7 +59,7 @@ function getMoviesk()
 									"<b>Summary: </b>"+ movieInfo.movies[i].synopsis+",<br/>"+
 									"<b>Cast: </b>"+cast+"<br/><br/>"+
 									//"<b>IMDB ID: </b>"+movieInfo.movies[i].alternate_ids.imdb+"<br/><hr>";
-                                   "<input type=button value=Reviews  data-corners=true data-inline=true data-shadow=true data-mini=true onclick=getReviewsk("+movieInfo.movies[i].id+","+movieInfo.movies[i].title+")>Reviews</input><br/><br/><hr>";									
+                                   "<input type='button' value='Reviews'  data-corners='true' data-inline='true' data-shadow='true' data-mini='true' onclick='getReviewsk(/"+movieInfo.movies[i].id+"/,/"+movieInfo.movies[i].title+"/)'></input><br/><br/><hr>";									
 									//"<a href= http://api.rottentomatoes.com/api/public/v1.0/movies/"+movieInfo.movies[i].id+"/reviews.json?apikey="+key+">Reviews</a><br/><br/><hr>";
 					         	}					                    
 					        }
@@ -102,10 +102,10 @@ function getReviewsk(movieId,movieTitle)
 								for(i=0;i<reviewInfo.reviews.length;i++)
 								{
 									element.innerHTML = element.innerHTML+
-									"\""+ reviewInfo.reviews[i].quote+".\" "+
+									"\""+ reviewInfo.reviews[i].quote+"\" "+
 								    reviewInfo.reviews[i].critic+",<i>"+
 									reviewInfo.reviews[i].publication+"</i>,"+
-									reviewInfo.reviews[i].date;
+									reviewInfo.reviews[i].date+"<br/></br>";
 					         	}			
 								//element.innerHTML = element.innerHTML+"</ol>";
 								//alert("output:"+element.innerHTML);
