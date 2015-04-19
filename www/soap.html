@@ -1,0 +1,52 @@
+<html>
+<head>
+    <title>SOAP JavaScript Client Test</title>
+    <script type="text/javascript">
+        function soap() {
+xmlhttp = new XMLHttpRequest();
+var zip = document.getElementById("zip").value;
+var url = "http://www.fandango.com/rss/moviesnearme_"+zip; 
+		xmlhttp.open('GET', url, true);
+		xmlhttp.setRequestHeader("Accept", "application/xml");
+		xmlhttp.send();
+		xmlhttp.onreadystatechange = function() {
+			if (xmlhttp.readyState == 4) {
+				if (xmlhttp.status == 200) {
+                    var text = xmlhttp.responseText;
+					if (window.DOMParser)
+  {
+  parser=new DOMParser();
+  xmlDoc=parser.parseFromString(text,"text/xml");
+  }
+else // Internet Explorer
+  {
+  xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+  xmlDoc.async=false;
+  xmlDoc.loadXML(text);
+  }  
+   document.getElementById("num").innerHTML=
+xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue;
+ document.getElementById("street").innerHTML=
+xmlDoc.getElementsByTagName("link")[0].childNodes[0].nodeValue;
+document.getElementById("city").innerHTML=
+xmlDoc.getElementsByTagName("description")[1].childNodes[0].nodeValue;
+document.getElementById("state").innerHTML=
+xmlDoc.getElementsByTagName("description")[2].childNodes[0].nodeValue;
+document.getElementById("zip").innerHTML=
+xmlDoc.getElementsByTagName("description")[3].childNodes[0].nodeValue;
+   }
+   }
+   }
+   }
+    </script>
+</head>
+<body>
+    <form name="Demo" action="" method="post">
+        <div>
+	        <input type="text" value="" id="zip" /> <br />
+            <input type="button" value="Soap" onclick="soap()" /> <br />
+            <span id="num"></span> <span id="street"></span><br /> <span id="city"></span> <span id="state"></span> <span id="zip"></span>
+        </div>
+    </form>
+</body>
+<html>
