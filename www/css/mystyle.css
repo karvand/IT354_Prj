@@ -24,7 +24,15 @@ img{
     vertical-align:text-top;
 	display:inline;
 	float:right;
+	padding-right: 10px;
 }
+
+#image{
+    vertical-align:text-top;
+	display:inline;
+	float:none;
+	padding-right: 3px;
+	}
 .ui-btn{
     font-size:.70em;
     margin-right:5px
