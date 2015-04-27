@@ -2,9 +2,11 @@
 <head>
     <title>SOAP JavaScript Client Test</title>
     <script type="text/javascript">
-        function soap() {
-xmlhttp = new XMLHttpRequest();
+        function findTheaters() {
+
 var zip = document.getElementById("zip").value;
+if(isValidUSZip(zip)||zip == ""){
+xmlhttp = new XMLHttpRequest();
 var url = "http://www.fandango.com/rss/moviesnearme_"+zip; 
 		xmlhttp.open('GET', url, true);
 		xmlhttp.setRequestHeader("Accept", "application/xml");
@@ -35,6 +37,14 @@ xmlDoc.getElementsByTagName("description")[1].childNodes[0].nodeValue;
    }
    }
    }
+   else{
+    document.getElementById("output").innerHTML = "Please enter a valid zip code";
+   }
+   }
+   
+   function isValidUSZip(zip) {
+   return /^\d{5}(-\d{4})?$/.test(zip);
+}
     </script>
 </head>
 <body>

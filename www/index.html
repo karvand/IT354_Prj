@@ -23,6 +23,7 @@
 			    <li><a href="#page2" class="ui-btn-icon-top" data-icon="info" >Movie Information</a></li>
 				<li><a href="#page3" class="ui-btn-icon-top" data-icon="comments" >Reviews</a></li>
                 <li><a href="#page4" class="ui-btn-icon-top" data-icon="film" >Box Office</a></li>
+				<li><a href="#page5" class="ui-btn-icon-top" data-icon="video-camera"><!--"location-arrow" -->Theaters</a></li>
             </ul>
             </nav>
         </div>
@@ -31,11 +32,21 @@
 	        </div>
 	        <br />
 	          <form id="form1" >
-		          <label for="title">Movie Title:</label>
+		          <!--<label for="title">Movie Title:</label>-->
                 <input type="text" name="title" id="title" placeholder="Enter name of the movie" data-clear-btn="true" required>
-			    <input type="button" id="current" value="Search" data-icon="search" data-corners="true" data-inline="true" data-shadow="true" data-mini="true" onclick="getMovies()">
+			    <input type="button" id="current" value="Find Movies" data-icon="search" data-corners="true" data-inline="true" data-shadow="true" data-mini="true" onclick="getMovies()">
 		  </form>
-			<div id="output1">
+		  <div id="output1">
+	        </div>
+			<br>
+			
+		   <form id="form2" >
+		          <!--<label for="title">Movie Title:</label>-->
+                <input type="text" name="zip" id="zip" placeholder="Enter zip code" data-clear-btn="true" required>
+			    <input type="button" id="current" value="Find Theaters" data-icon="search" data-corners="true" data-inline="true" data-shadow="true" data-mini="true" onclick="getTheaters()">
+		  </form>
+		  
+			<div id="output">
 	        </div>
         </div>
         <div data-role="footer" style="font-size:10px" data-position="fixed">
@@ -52,6 +63,7 @@
 			    <li><a href="#" class="ui-btn-active ui-state-persist ui-btn-icon-top" data-icon="info" >Movie Information</a></li>
 				<li><a href="#page3" class="ui-btn-icon-top" data-icon="comments" >Reviews</a></li>
                 <li><a href="#page4" class="ui-btn-icon-top" data-icon="film" >Box Office</a></li>
+				<li><a href="#page5" class="ui-btn-icon-top" data-icon="video-camera"><!--"location-arrow" -->Theaters</a></li>
             </ul>
             </nav>
         </div>
@@ -75,6 +87,7 @@
 			    <li><a href="#page2" class="ui-btn-icon-top" data-icon="info" >Movie Information</a></li>
 				<li><a href="#" class="ui-btn-active ui-state-persist ui-btn-icon-top" data-icon="comments" >Reviews</a></li>
                 <li><a href="#page4" class="ui-btn-icon-top" data-icon="film" >Box Office</a></li>
+				<li><a href="#page5" class="ui-btn-icon-top" data-icon="video-camera"><!--"location-arrow" -->Theaters</a></li>
             </ul>
             </nav>
         </div>
@@ -96,6 +109,7 @@
 			    <li><a href="#page2" class="ui-btn-icon-top" data-icon="info" >Movie Information</a></li>
 				<li><a href="#page3" class="ui-btn-icon-top" data-icon="comments" >Reviews</a></li>
                 <li><a href="#" class="ui-btn-active ui-state-persist ui-btn-icon-top" data-icon="film" >Box Office</a></li>
+				<li><a href="#page5" class="ui-btn-icon-top" data-icon="video-camera"><!--"location-arrow" -->Theaters</a></li>
             </ul>
             </nav>
         </div>
@@ -103,6 +117,30 @@
 			<div id="output4">
 	        </div>
         </div>
+        <div data-role="footer" style="font-size:10px" data-position="fixed">
+             &nbsp;&nbsp;Copyright &copy; 2015 Kaveh Arvand, Amitesh Jain
+        </div> 
+    </div>
+	
+	<div data-role="page" id="page5" data-transition="slide" >
+        <div data-role="header" data-position="fixed">
+            <h1>IT354-Project</h1>
+            <nav data-role="navbar" data-position="fixed">
+            <ul>
+                <li><a href="#page1" class="ui-btn-icon-top" data-icon="home"  data-direction="reverse">Home</a></li>
+			    <li><a href="#page2" class="ui-btn-icon-top" data-icon="info" >Movie Information</a></li>
+				<li><a href="#page3" class="ui-btn-icon-top" data-icon="comments" >Reviews</a></li>
+                <li><a href="#page4" class="ui-btn-icon-top" data-icon="film" >Box Office</a></li>
+				<li><a href="#" class="ui-btn-active ui-state-persist ui-btn-icon-top" data-icon="video-camera"><!--"location-arrow" -->Theaters</a></li>
+            </ul>
+            </nav>
+        </div>
+        <div data-role="main" class="ui-content">
+	        <div data-role="content" id="entries">
+           <div id="output5">
+	        </div>
+        </div>
+		</div>
         <div data-role="footer" style="font-size:10px" data-position="fixed">
              &nbsp;&nbsp;Copyright &copy; 2015 Kaveh Arvand, Amitesh Jain
         </div> 
