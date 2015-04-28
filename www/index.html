@@ -3,17 +3,80 @@
   <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	<title>IT 354 - Project</title>
+	 
 	<link rel="stylesheet"  href="css/jquery.mobile.min.css">
 	<link rel="stylesheet" type="text/css" href="css/mystyle.css">
 	<link rel="stylesheet" type="text/css" href="css/jqm-icon-pack-fa.css">
+	<style>
+		html, body, #map-canvas {
+			height: 100%;
+			margin: 0px;
+			padding: 0px
+		}
+	
+	</style>
 	<script src="js/jquery.js"></script>
 	<script src="js/jquery.mobile.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/Kaveh.js"></script>
+	 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
 	<script>$(document).on("pagecreate","#page1",function(){getBoxOfficeImages();}); </script>
+	<script>$(document).on("pagecreate","#page1",function(){findMyLocation();}); </script>
 	<script>$(document).on("pagecreate","#page4",function(){getBoxOffice();}); </script>
+	<script>$(document).on("pagecreate","#page6",function(){calcRoute();}); </script>
+	
+	
+	 <script>
+		var directionsDisplay;
+		var directionsService = new google.maps.DirectionsService();
+		var map;
+
+		function initialize() {
+			 directionsService = new google.maps.DirectionsService();
+			 directionsDisplay = new google.maps.DirectionsRenderer();
+			var chicago = new google.maps.LatLng(41.8369, -87.6847);
+			var mapOptions = {
+				zoom:10,
+				center: chicago
+			};
+			 map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+			directionsDisplay.setMap(map);
+			
+		}
+
+		function calcRoute() {
+			
+			var lat = localStorage.getItem("latitude");
+			var lon = localStorage.getItem("longitude");
+		
+		var dest = localStorage.getItem("theatreDestination");
+			
+			var latlng = new google.maps.LatLng(parseFloat(lat), parseFloat(lon));
+			var sourceAddress = latlng;	
+			var destination = dest;
+
+			var request = {
+				origin:sourceAddress,
+				destination:destination,
+				travelMode: google.maps.TravelMode.WALKING
+			};
+			
+			directionsService.route(request, function(response, status) {
+				if (status == google.maps.DirectionsStatus.OK) {
+					directionsDisplay.setDirections(response);
+				}
+			});
+			
+		}
+		
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+	</script>
+	
+
+	
     </head>
-  <body>
+  <body >
 	<div data-role="page" id="page1" >
         <div data-role="header" data-position="fixed">
 			<h1>IT354-Project</h1>
@@ -24,6 +87,7 @@
 				<li><a href="#page3" class="ui-btn-icon-top" data-icon="comments" >Reviews</a></li>
                 <li><a href="#page4" class="ui-btn-icon-top" data-icon="film" >Box Office</a></li>
 				<li><a href="#page5" class="ui-btn-icon-top" data-icon="video-camera"><!--"location-arrow" -->Theaters</a></li>
+				<li><a href="#page6" class="ui-btn-icon-top" data-icon="location-arrow">Theater Route</a></li>
             </ul>
             </nav>
         </div>
@@ -43,7 +107,7 @@
 		   <form id="form2" >
 		          <!--<label for="title">Movie Title:</label>-->
                 <input type="text" name="zip" id="zip" placeholder="Enter zip code" data-clear-btn="true" required>
-			    <input type="button" id="current" value="Find Theaters" data-icon="search" data-corners="true" data-inline="true" data-shadow="true" data-mini="true" onclick="getTheaters()">
+			    <input type="button" id="current1" value="Find Theaters" data-icon="search" data-corners="true" data-inline="true" data-shadow="true" data-mini="true" onclick="getTheaters()">
 		  </form>
 		  
 			<div id="output">
@@ -64,6 +128,7 @@
 				<li><a href="#page3" class="ui-btn-icon-top" data-icon="comments" >Reviews</a></li>
                 <li><a href="#page4" class="ui-btn-icon-top" data-icon="film" >Box Office</a></li>
 				<li><a href="#page5" class="ui-btn-icon-top" data-icon="video-camera"><!--"location-arrow" -->Theaters</a></li>
+				<li><a href="#page6" class="ui-btn-icon-top" data-icon="location-arrow">Theater Route</a></li>
             </ul>
             </nav>
         </div>
@@ -88,6 +153,7 @@
 				<li><a href="#" class="ui-btn-active ui-state-persist ui-btn-icon-top" data-icon="comments" >Reviews</a></li>
                 <li><a href="#page4" class="ui-btn-icon-top" data-icon="film" >Box Office</a></li>
 				<li><a href="#page5" class="ui-btn-icon-top" data-icon="video-camera"><!--"location-arrow" -->Theaters</a></li>
+				<li><a href="#page6" class="ui-btn-icon-top" data-icon="location-arrow">Theater Route</a></li>
             </ul>
             </nav>
         </div>
@@ -110,6 +176,7 @@
 				<li><a href="#page3" class="ui-btn-icon-top" data-icon="comments" >Reviews</a></li>
                 <li><a href="#" class="ui-btn-active ui-state-persist ui-btn-icon-top" data-icon="film" >Box Office</a></li>
 				<li><a href="#page5" class="ui-btn-icon-top" data-icon="video-camera"><!--"location-arrow" -->Theaters</a></li>
+				<li><a href="#page6" class="ui-btn-icon-top" data-icon="location-arrow">Theater Route</a></li>
             </ul>
             </nav>
         </div>
@@ -132,6 +199,7 @@
 				<li><a href="#page3" class="ui-btn-icon-top" data-icon="comments" >Reviews</a></li>
                 <li><a href="#page4" class="ui-btn-icon-top" data-icon="film" >Box Office</a></li>
 				<li><a href="#" class="ui-btn-active ui-state-persist ui-btn-icon-top" data-icon="video-camera"><!--"location-arrow" -->Theaters</a></li>
+				<li><a href="#page6" class="ui-btn-icon-top" data-icon="location-arrow">Theater Route</a></li>
             </ul>
             </nav>
         </div>
@@ -141,6 +209,40 @@
 	        </div>
         </div>
 		</div>
+        <div data-role="footer" style="font-size:10px" data-position="fixed">
+             &nbsp;&nbsp;Copyright &copy; 2015 Kaveh Arvand, Amitesh Jain
+        </div> 
+    </div>
+    <div data-role="page" id="page6" data-transition="slide" >
+	
+<!--Added to get the map-->
+   	<script>
+function myFunction() {
+    location.reload();
+}
+</script>
+        <div data-role="header" data-position="fixed">
+            <h1>IT354-Project</h1>
+            <nav data-role="navbar" data-position="fixed">
+            <ul>
+                <li><a href="#page1" class="ui-btn-icon-top" data-icon="home"  data-direction="reverse">Home</a></li>
+			    <li><a href="#page2" class="ui-btn-icon-top" data-icon="info" >Movie Information</a></li>
+				<li><a href="#page3" class="ui-btn-icon-top" data-icon="comments" >Reviews</a></li>
+                <li><a href="#page4" class="ui-btn-icon-top" data-icon="film" >Box Office</a></li>
+				<li><a href="#page5" class="ui-btn-icon-top" data-icon="video-camera">Theaters</a></li>
+				<li><a href="#" class="ui-btn-active ui-state-persist ui-btn-icon-top" data-icon="location-arrow">Theater Route</a></li>
+            </ul>
+            </nav>
+        </div>
+        <div data-role="main" class="ui-content">
+            <form id="form1">
+	          
+               <br />
+               <div id="result"></div>
+               <div id="result1"></div>
+<div id="map-canvas" style="height:400px; width:100%"></div>
+            </form>
+        </div>
         <div data-role="footer" style="font-size:10px" data-position="fixed">
              &nbsp;&nbsp;Copyright &copy; 2015 Kaveh Arvand, Amitesh Jain
         </div> 

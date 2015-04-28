@@ -183,7 +183,6 @@ function getMovieDetailsFromImages(id) {
 }
 
 function getTheaters() {
-
 var zip = document.getElementById("zip").value;
 if(isValidUSZip(zip)&& zip != ""){
 	document.getElementById("output1").innerHTML = "";
@@ -218,6 +217,11 @@ else // Internet Explorer
    element.innerHTML="<b>"+date+"</b><br><br><b>";
    var xmlNodes = ["title","description","link"];
    var itemTags = xmlDoc.getElementsByTagName ("item");
+   var add = xmlDoc.getElementsByTagName("description")[1].childNodes[0].nodeValue;
+   var index = add.indexOf("</p>");
+   var address = add.substring(3, index);
+   //Setting address of theatre in localStorege
+   localStorage.setItem("theatreDestination", address);
      for (i = 0; i < itemTags.length; i++) { 
          for (j = 0; j < xmlNodes.length; j++) {
               var recordNode = itemTags[i].getElementsByTagName(xmlNodes[j])[0];	 
@@ -247,3 +251,40 @@ else // Internet Explorer
    function isValidUSZip(zip) {
    return /^\d{5}(-\d{4})?$/.test(zip);
 }
+
+ function findMyLocation() {
+ //	var location = document.getElementById("result");
+ 	//location.innerHTML = "<p>Searching…</p>";
+ 	if (!navigator.geolocation) {
+ 		location.innerHTML = "<p>Geolocation is not supported by your browser</p>";
+ 		return;
+ 	}
+
+ 	function success(position) {
+ 		var lat = parseFloat(position.coords.latitude);
+ 		var lon = parseFloat(position.coords.longitude);
+ 		//alert(lat);
+ 		//Javascript Session
+ 		localStorage.setItem("latitude", lat);
+ 		localStorage.setItem("longitude", lon);
+ 		//location.innerHTML = '<p>Latitude: ' + lat + '° <br>Longitude: ' + lon + '°</p>';
+ 	};
+
+ 	function showError(error) {
+ 		switch (error.code) {
+ 		case error.PERMISSION_DENIED:
+ 			location.innerHTML = "Geolocation request terminated by user."
+ 			break;
+ 		case error.POSITION_UNAVAILABLE:
+ 			location.innerHTML = "Your location information is unavailable."
+ 			break;
+ 		case error.TIMEOUT:
+ 			location.innerHTML = "Request timed out."
+ 			break;
+ 		case error.UNKNOWN_ERROR:
+ 			location.innerHTML = "Unknown error."
+ 			break;
+ 		}
+ 	}
+ 	navigator.geolocation.getCurrentPosition(success, showError);
+ }

@@ -28,6 +28,7 @@ else // Internet Explorer
   }  
    document.getElementById("num").innerHTML=
 xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue;
+alert(xmlDoc.getElementsByTagName("title")[2].childNodes[0].nodeValue);
  document.getElementById("street").innerHTML=
 xmlDoc.getElementsByTagName("link")[2].childNodes[0].nodeValue;
 document.getElementById("city").innerHTML=
@@ -51,7 +52,7 @@ xmlDoc.getElementsByTagName("description")[1].childNodes[0].nodeValue;
     <form name="Demo" action="" method="post">
         <div>
 	        <input type="text" value="" id="zip" /> <br />
-            <input type="button" value="Soap" onclick="soap()" /> <br />
+            <input type="button" value="Soap" onclick="findTheaters()" /> <br />
             <span id="num"></span> <span id="street"></span><br /> <span id="city"></span> <span id="state"></span> <span id="zip"></span>
         </div>
     </form>
