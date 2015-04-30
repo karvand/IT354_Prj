@@ -187,6 +187,7 @@ var zip = document.getElementById("zip").value;
 if(isValidUSZip(zip)&& zip != ""){
 	document.getElementById("output1").innerHTML = "";
 		element = document.getElementById("output5");
+		document.getElementById("output").innerHTML = "";
 		element.innerHTML = "";
 	$.mobile.changePage($("#page5"), {
 			transition: "slide",
@@ -288,3 +289,34 @@ else // Internet Explorer
  	}
  	navigator.geolocation.getCurrentPosition(success, showError);
  }
+
+function changeThePage(){
+	var result = document.getElementById("output5").innerHTML;
+	if (result != "" || result != null){
+		 window.location = 'map.html';
+			}
+		else{
+    document.getElementById("output").innerHTML = "Please first search for movie theaters.";
+   }
+	
+}
+
+function redirectToHomePage(){
+		 window.location = 'index.html';		
+}
+
+function redirectToMovieinformation(){
+		 window.location = 'index.html#page2';		
+}
+
+function redirectToReview(){
+		 window.location = 'index.html#page3';		
+}
+
+function redirectToBoxOffice(){
+		 window.location = 'index.html#page4';		
+}
+
+function redirectToTheaters(){
+		 window.location = 'index.html#page5';		
+}
