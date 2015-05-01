@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.helloworld" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Hello World</name>
+<widget id="com.phonegap.movieFinder" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <name>Movie Finder</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        Movie Finder is an application for finding information about movies and theaters.
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+        Amitesh Jain(ajain5@ilstu.edu)
+		Kaveh Arvand(karvand@ilstu.edu)
     </author>
     <content src="index.html" />
     <preference name="permissions" value="none" />
