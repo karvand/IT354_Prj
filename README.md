@@ -9,7 +9,7 @@ The application consumes RESTful API’s to retrieve the mentioned information.
 The following technologies have been used for building this application:
 •	PhoneGap: An open source mobile application framework which is owned by Adobe and enables creating mobile apps using standardized web APIs for different platforms. It includes different services such as PhoneGap Build that packages mobile apps in the cloud and PhoneGap Desktop which is an alternative to Phonegap CLI(Command Line Interface). Both of the mentioned services have been used in this application.
 •	jQuery Mobile: A powerful UI framework designed to make responsive apps that are accessible on all smartphone, tablet and desktop devices
-•	GitHub (https://github.com/karvand/IT354_Prj.git): A web based Git repository that enables distributed revision control and source code management. 
+•	GitHub: A web based Git repository that enables distributed revision control and source code management. 
 •	Restful Web Services(API’s)
 •	Rotten Tomatoes: A free web service that provides information about movies in json/xml format
 •	Fandango : A free web service that provides information about movies theaters in xml format
